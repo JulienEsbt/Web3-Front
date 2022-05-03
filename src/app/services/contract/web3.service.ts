@@ -77,7 +77,7 @@ export class Web3Service {
     this.accounts = await this.web3js.eth.getAccounts();
 
     // contractAddress and abi are setted after contract deploy
-    var contractAddress = '0xeC7890A9664EA8Ffa92e9c10195Db26b700A3dC6';
+    var contractAddress = '0xed8A56B4b028F731f57daF888e9E66f117494098';
     this.contract =new this.web3js.eth.Contract(abi, contractAddress)
 
     return this.accounts;
