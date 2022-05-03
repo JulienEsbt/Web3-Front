@@ -4,9 +4,24 @@
 
 
   <h1>Get into web3</h1>
-  <h2> Adresse :{{ data }}</h2>
+  <ng-template [ngIf]="adress">
+    <h2> Adresse :{{ adress[0] }}</h2>
+    <h2> Balance :{{ balance }} eth</h2>
+  </ng-template>
+
+
+
   <button mat-raised-button color="primary" (click)="Connect()" >
     Connect your wallet
   </button>
+
+  <button mat-raised-button color="accent" (click)="Wave()" >
+    wave
+  </button>
+
+
+<br><br>
+  <h3> Last :{{ last }} eth</h3>
+
 
 </mat-card>

@@ -5,8 +5,7 @@ import Web3 from 'web3';
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { provider } from 'web3-core';
-
-
+import {Contract, ContractOptions} from 'web3-eth-contract';
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +21,16 @@ export class Web3Service {
   provider: provider | undefined;
   accounts: string[] | undefined;
   balance: string | undefined;
+  contract: Contract | undefined;
+
+
 
   constructor(@Inject(WEB3) private web3: Web3) {
     const providerOptions = {
       walletconnect: {
         package: WalletConnectProvider, // required
         options: {
-          infuraId: 'env', // required change this with your own infura id
+          infuraId: '84d08e237e084e5994d0c9489d1dc8f0', // required change this with your own infura id
           description: 'Scan the qr code and sign in',
           qrcodeModalOptions: {
             mobileLinks: [
@@ -53,7 +55,7 @@ export class Web3Service {
     };
 
     this.web3Modal = new Web3Modal({
-      network: "mainnet", // optional change this with the net you want to use like rinkeby etc
+      network: "rinkeby", // optional change this with the net you want to use like rinkeby etc
       cacheProvider: true, // optional
       providerOptions, // required
       theme: {
@@ -67,19 +69,49 @@ export class Web3Service {
   }
 
 
-  async connectAccount() {
+  async connectAccount(abi:any) {
     this.provider = await this.web3Modal.connect(); // set provider
     if (this.provider) {
       this.web3js = new Web3(this.provider);
     } // create web3 instance
     this.accounts = await this.web3js.eth.getAccounts();
+
+    // contractAddress and abi are setted after contract deploy
+    var contractAddress = '0xeC7890A9664EA8Ffa92e9c10195Db26b700A3dC6';
+    this.contract =new this.web3js.eth.Contract(abi, contractAddress)
+
     return this.accounts;
   }
 
-  async accountInfo(account: any[]){
-    const initialvalue = await this.web3js.eth.getBalance(account);
+  getContract() {
+    return this.contract;
+  }
+
+  async accountInfo(adress :string){
+    const initialvalue = await this.web3js.eth.getBalance(adress);
     this.balance = this.web3js.utils.fromWei(initialvalue , 'ether');
     return this.balance;
+  }
+
+
+  async sendWave(): Promise<any>{
+
+    try {
+      if (this.provider) {
+        // contract.methods.getTotalWaves().call().then(response => {
+        //   console.log(response)
+        // });
+        // using the promise
+        return this.contract.methods.wave("test yann").send({from: this.accounts[0] });
+;
+      } else {
+        console.log("Ethereum object doesn't exist!");
+        return ""
+      }
+    } catch (error) {
+      console.log(error);
+      return ""
+    }
   }
 
 }
