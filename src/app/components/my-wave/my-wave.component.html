@@ -1,7 +1,4 @@
-
-
 <mat-card>
-
 
   <h1>Get into web3</h1>
   <ng-template [ngIf]="adress">
@@ -10,16 +7,21 @@
   </ng-template>
 
 
+  <ng-template [ngIf]="!adress">
+    <button mat-raised-button color="primary" (click)="Connect()" >
+      Connect your wallet
+    </button><br><br>
+  </ng-template>
 
-  <button mat-raised-button color="primary" (click)="Connect()" >
-    Connect your wallet
-  </button>
+  <label>
+    <p>Message : <input type="text" name="name" onChange={handleInputChange}/>
+      <button mat-raised-button color="accent" (click)="Wave()">
+        Envoyer le message
+      </button>
+    </p>
+  </label>
+  <br>
 
-  <button mat-raised-button color="accent" (click)="Wave()" >
-    wave
-  </button>
-  <br>
-  <br>
 
   <a href="https://rinkeby.etherscan.io/address/0xed8A56B4b028F731f57daF888e9E66f117494098" target="_blank" onClick="fonction(this.href); return false;">
     <button mat-raised-button color="primary">

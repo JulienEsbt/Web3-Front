@@ -20,6 +20,7 @@ export class MyWaveComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.Connect();
   }
 
   Connect() {
@@ -41,12 +42,8 @@ export class MyWaveComponent implements OnInit {
       this.web3.getContract().events.NewWave(options).then( (event: any)=>{
         console.log(event)
       })
-
-
       // this.web3.getContract().
-
     })
-
   }
 
   Wave() {

@@ -23,8 +23,6 @@ export class Web3Service {
   balance: string | undefined;
   contract: Contract | undefined;
 
-
-
   constructor(@Inject(WEB3) private web3: Web3) {
     const providerOptions = {
       walletconnect: {
@@ -68,7 +66,6 @@ export class Web3Service {
     });
   }
 
-
   async connectAccount(abi:any) {
     this.provider = await this.web3Modal.connect(); // set provider
     if (this.provider) {
@@ -94,8 +91,8 @@ export class Web3Service {
   }
 
 
-  async sendWave(): Promise<any>{
 
+  async sendWave(): Promise<any>{
     try {
       if (this.provider) {
         // contract.methods.getTotalWaves().call().then(response => {
@@ -103,7 +100,6 @@ export class Web3Service {
         // });
         // using the promise
         return this.contract.methods.wave("test yann").send({from: this.accounts[0] });
-;
       } else {
         console.log("Ethereum object doesn't exist!");
         return ""
