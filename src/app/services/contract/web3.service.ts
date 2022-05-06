@@ -22,6 +22,8 @@ export class Web3Service {
   accounts: string[] | undefined;
   balance: string | undefined;
   contract: Contract | undefined;
+  message: string | undefined;
+  /*wavesCleaned: [] | undefined;*/
 
   constructor(@Inject(WEB3) private web3: Web3) {
     const providerOptions = {
@@ -66,6 +68,34 @@ export class Web3Service {
     });
   }
 
+  /*async getAllWaves (abi:any) {
+    this.provider = await this.web3Modal.connect(); // set provider
+    if (this.provider) {
+      this.web3js = new Web3(this.provider);
+    } // create web3 instance
+    this.accounts = await this.web3js.eth.getAccounts();
+
+    // contractAddress and abi are setted after contract deploy
+    var contractAddress = '0xed8A56B4b028F731f57daF888e9E66f117494098';
+    this.contract = new this.web3js.eth.Contract(abi, contractAddress)
+
+    // @ts-ignore
+    const waves = await this.contract.getAllWaves();
+
+    waves.forEach((wave: { waver: any; timestamp: number; message: any; }) => {
+      // @ts-ignore
+      this.wavesCleaned.push({
+        // @ts-ignore
+        address: wave.waver,
+        // @ts-ignore
+        timestamp: new Date(wave.timestamp * 1000),
+        // @ts-ignore
+        message: wave.message
+      });
+    });
+  }
+  */
+
   async connectAccount(abi:any) {
     this.provider = await this.web3Modal.connect(); // set provider
     if (this.provider) {
@@ -84,22 +114,17 @@ export class Web3Service {
     return this.contract;
   }
 
-  async accountInfo(adress :string){
+  async accountBalance(adress :string){
     const initialvalue = await this.web3js.eth.getBalance(adress);
     this.balance = this.web3js.utils.fromWei(initialvalue , 'ether');
     return this.balance;
   }
 
-
-
-  async sendWave(): Promise<any>{
+  async sendWave(message :string): Promise<any>{
     try {
       if (this.provider) {
-        // contract.methods.getTotalWaves().call().then(response => {
-        //   console.log(response)
-        // });
-        // using the promise
-        return this.contract.methods.wave("test yann").send({from: this.accounts[0] });
+        // @ts-ignore
+        return this.contract.methods.wave(message).send({from: this.accounts[0] });
       } else {
         console.log("Ethereum object doesn't exist!");
         return ""

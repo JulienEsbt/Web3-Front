@@ -1,38 +1,57 @@
 <mat-card>
 
-  <h1>Get into web3</h1>
+  <h1>My Wave app - Envoie un message sur la blockchain</h1><br>
+
   <ng-template [ngIf]="adress">
-    <h2> Adresse :{{ adress[0] }}</h2>
-    <h2> Balance :{{ balance }} eth</h2>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Mon adresse : {{ adress[0] }}
+          </mat-panel-title>
+          <mat-panel-description>
+            Montrer ma balance : {{panelOpenState ? 'Oui' : 'Non'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Balance :{{ balance }} eth</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br><br>
   </ng-template>
 
-
-  <ng-template [ngIf]="!adress">
-    <button mat-raised-button color="primary" (click)="Connect()" >
-      Connect your wallet
-    </button><br><br>
-  </ng-template>
-
-  <label>
-    <p>Message : <input type="text" name="name" onChange={handleInputChange}/>
-      <button mat-raised-button color="accent" (click)="Wave()">
-        Envoyer le message
-      </button>
-    </p>
-  </label>
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Votre message : </mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..." type="text" name="message" id="message1" [(ngModel)]="message" (keyup.enter)="Wave()"></textarea>
+      <ng-template [ngIf]="adress">
+        <button mat-raised-button color="accent" (click)="Wave()">
+          Envoyer le message
+        </button>
+      </ng-template>
+      <ng-template [ngIf]="!adress">
+        <button mat-raised-button color="accent" (click)="Connect()" >
+          Connecter d'abord votre portefeuille
+        </button>
+      </ng-template>
+    </mat-form-field>
+  </form>
   <br>
-
 
   <a href="https://rinkeby.etherscan.io/address/0xed8A56B4b028F731f57daF888e9E66f117494098" target="_blank" onClick="fonction(this.href); return false;">
     <button mat-raised-button color="primary">
-      Voir le contrat sur Etherscan
+      Voir le smart contrat sur Etherscan
     </button>
   </a>
 
-
 <br><br>
-  <h3> Last :{{ last }} eth</h3>
-  <h3> Conversation : </h3>
-
+  <!--<h3> Conversation : {{allWaves.map((wave, index) => {
+    return (
+    <div key={index} >
+    <div>Address: {{all.waver}}</div>
+    <div>Time: {{wave.timestamp.toString()}</div>
+    <div>Message: {{all.message}}</div>
+    </div>)
+    })}}</h3>-->
 
 </mat-card>
