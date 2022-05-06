@@ -93,8 +93,7 @@ export class Web3Service {
         message: wave.message
       });
     });
-  }
-  */
+  }*/
 
   async connectAccount(abi:any) {
     this.provider = await this.web3Modal.connect(); // set provider

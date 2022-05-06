@@ -4,8 +4,7 @@
 
   <ng-template [ngIf]="adress">
     <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Mon adresse : {{ adress[0] }}
@@ -44,13 +43,16 @@
     </button>
   </a>
 
-<br><br>
+  <br>
+  <br>
+  <h3>Chat box : </h3>
+
   <!--<h3> Conversation : {{allWaves.map((wave, index) => {
     return (
     <div key={index} >
-    <div>Address: {{all.waver}}</div>
+    <div>Address: {{wave.waver}}</div>
     <div>Time: {{wave.timestamp.toString()}</div>
-    <div>Message: {{all.message}}</div>
+    <div>Message: {{wave.message}}</div>
     </div>)
     })}}</h3>-->
 
