@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {AppComponent} from "./app.component";
 import {MarketPlaceComponent} from "./components/market-place/market-place.component";
 import {MyWaveComponent} from "./components/my-wave/my-wave.component";
+import {HelloWorldComponent} from "./components/hello-world/hello-world.component";
 
 const routes: Routes = [
   {
@@ -14,8 +15,8 @@ const routes: Routes = [
     component: MarketPlaceComponent
   },
   {
-    path: 'wave',
-    component: MyWaveComponent
+    path: 'hello',
+    component: HelloWorldComponent
   },
   {
     path: '**',

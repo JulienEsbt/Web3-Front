@@ -8,13 +8,15 @@ import { MarketPlaceComponent } from './components/market-place/market-place.com
 import {AppRoutingModule} from "./app-routing.module";
 import {MaterialModule} from "./shared/material.module";
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { HelloWorldComponent } from './components/hello-world/hello-world.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyWaveComponent,
     MarketPlaceComponent,
-    NavigationComponent
+    NavigationComponent,
+    HelloWorldComponent
   ],
   imports: [
     BrowserModule,
