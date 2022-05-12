@@ -42,7 +42,7 @@ export class HelloWorldComponent implements OnInit {
         fromBlock: 0
       };
       // @ts-ignore
-      this.web3.getContract().events.NewWave(options).then( (event: any)=>{
+      this.web3.getContract().events.UpdatedMessages(options).then( (event: any)=>{
         console.log(event)
       })
       // this.web3.getContract().
@@ -54,6 +54,5 @@ export class HelloWorldComponent implements OnInit {
       this.last = response
     })
   }
-
 
 }

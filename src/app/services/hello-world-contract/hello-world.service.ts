@@ -19,8 +19,6 @@ export class HelloWorldService {
   accounts: string[] | undefined;
   balance: string | undefined;
   contract: Contract | undefined;
-  message: string | undefined;
-  /*wavesCleaned: [] | undefined;*/
 
   constructor(@Inject(WEB3) private web3: Web3) {
     const providerOptions = {
@@ -89,21 +87,6 @@ export class HelloWorldService {
     return this.balance;
   }
 
-  /*async sendWave(message :string): Promise<any>{
-    try {
-      if (this.provider) {
-        // @ts-ignore
-        return this.contract.methods.wave(message).send({from: this.accounts[0] });
-      } else {
-        console.log("Ethereum object doesn't exist!");
-        return ""
-      }
-    } catch (error) {
-      console.log(error);
-      return ""
-    }
-  }*/
-
   async update(message :string): Promise<any>{
     try {
       if (this.provider) {
@@ -118,5 +101,4 @@ export class HelloWorldService {
       return ""
     }
   }
-
 }

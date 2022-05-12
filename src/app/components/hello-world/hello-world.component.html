@@ -21,7 +21,7 @@
   <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Votre message - soyez bien connecté au réseau ropsten : </mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..." type="text" name="message" id="message1" [(ngModel)]="message" (keyup.enter)="envoie()"></textarea>
+      <textarea matInput type="text" name="message" id="message1" [(ngModel)]="message" (keyup.enter)="envoie()"></textarea>
       <ng-template [ngIf]="adress">
         <button mat-raised-button color="accent" (click)="envoie()">
           Envoyer le message :
