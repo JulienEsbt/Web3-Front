@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// @ts-ignore
 import {Web3Service} from "../../services/contract/web3.service";
 import {environment} from "../../../environments/environment";
 
@@ -7,11 +8,13 @@ import {environment} from "../../../environments/environment";
   templateUrl: './my-wave.component.html',
   styleUrls: ['./my-wave.component.css']
 })
+
 export class MyWaveComponent implements OnInit {
   authenticated: boolean = false;
   adress: string[] | undefined;
   balance= ''
-  abi = environment.abi;
+  contractAddress = '0xed8A56B4b028F731f57daF888e9E66f117494098';
+  abi = environment.mywaveabi;
   last: any;
   message: string = '';
   panelOpenState = false;
@@ -25,11 +28,11 @@ export class MyWaveComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.Connect();
+    this.Connect();
   }
 
   Connect() {
-    this.web3.connectAccount(this.abi).then(response => {
+    this.web3.connectAccount(this.abi, this.contractAddress).then(response => {
       console.log(response);
       this.adress = response
       if (this.adress) {

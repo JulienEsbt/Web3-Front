@@ -4,6 +4,7 @@ import {AppComponent} from "./app.component";
 import {MarketPlaceComponent} from "./components/market-place/market-place.component";
 import {MyWaveComponent} from "./components/my-wave/my-wave.component";
 import {HelloWorldComponent} from "./components/hello-world/hello-world.component";
+import {NavigationComponent} from "./components/navigation/navigation.component";
 
 const routes: Routes = [
   {

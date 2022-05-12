@@ -11,7 +11,7 @@ import {Contract/*, ContractOptions*/} from 'web3-eth-contract';
   providedIn: 'root'
 })
 
-export class Web3Service {
+export class HelloWorldService {
   public accountsObservable = new Subject<string[]>();
   web3Modal;
   web3js:  any;
@@ -52,7 +52,7 @@ export class Web3Service {
     };
 
     this.web3Modal = new Web3Modal({
-      network: "rinkeby", // optional change this with the net you want to use like rinkeby etc
+      network: "ropsten", // optional change this with the net you want to use like rinkeby etc
       cacheProvider: true, // optional
       providerOptions, // required
       theme: {
@@ -65,33 +65,6 @@ export class Web3Service {
     });
   }
 
-  /*async getAllWaves (abi:any) {
-    this.provider = await this.web3Modal.connect(); // set provider
-    if (this.provider) {
-      this.web3js = new Web3(this.provider);
-    } // create web3 instance
-    this.accounts = await this.web3js.eth.getAccounts();
-
-    // contractAddress and abi are setted after contract deploy
-    var contractAddress = '0xed8A56B4b028F731f57daF888e9E66f117494098';
-    this.contract = new this.web3js.eth.Contract(abi, contractAddress)
-
-    // @ts-ignore
-    const waves = await this.contract.getAllWaves();
-
-    waves.forEach((wave: { waver: any; timestamp: number; message: any; }) => {
-      // @ts-ignore
-      this.wavesCleaned.push({
-        // @ts-ignore
-        address: wave.waver,
-        // @ts-ignore
-        timestamp: new Date(wave.timestamp * 1000),
-        // @ts-ignore
-        message: wave.message
-      });
-    });
-  }*/
-
   async connectAccount(abi:any, contractAddress:string) {
     this.provider = await this.web3Modal.connect(); // set provider
     if (this.provider) {
@@ -100,7 +73,7 @@ export class Web3Service {
     this.accounts = await this.web3js.eth.getAccounts();
 
     // contractAddress and abi are setted after contract deploy
-    // var contractAddress = '0xed8A56B4b028F731f57daF888e9E66f117494098';
+    // var contractAddress = '0xD1A36e0d2f7AC156593E6a243918C722e7b81B8c';
     this.contract =new this.web3js.eth.Contract(abi, contractAddress)
 
     return this.accounts;
@@ -116,7 +89,7 @@ export class Web3Service {
     return this.balance;
   }
 
-  async sendWave(message :string): Promise<any>{
+  /*async sendWave(message :string): Promise<any>{
     try {
       if (this.provider) {
         // @ts-ignore
@@ -129,7 +102,21 @@ export class Web3Service {
       console.log(error);
       return ""
     }
+  }*/
+
+  async update(message :string): Promise<any>{
+    try {
+      if (this.provider) {
+        // @ts-ignore
+        return this.contract.methods.update(message).send({from: this.accounts[0] });
+      } else {
+        console.log("Ethereum object doesn't exist!");
+        return ""
+      }
+    } catch (error) {
+      console.log(error);
+      return ""
+    }
   }
 
 }
-

@@ -1,4 +1,45 @@
 <mat-card>
-  <h1>Hello World app - Debut de projet</h1><br>
+  <h1>Hello World app - Debut de projet sur la blockchain ropsten</h1><br>
+
+  <ng-template [ngIf]="adress">
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Mon adresse : {{ adress[0] }}
+          </mat-panel-title>
+          <mat-panel-description>
+            Montrer ma balance : {{panelOpenState ? 'Oui' : 'Non'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Balance :{{ balance }} eth</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br><br>
+  </ng-template>
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Votre message - soyez bien connecté au réseau ropsten : </mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..." type="text" name="message" id="message1" [(ngModel)]="message" (keyup.enter)="envoie()"></textarea>
+      <ng-template [ngIf]="adress">
+        <button mat-raised-button color="accent" (click)="envoie()">
+          Envoyer le message :
+        </button>
+      </ng-template>
+      <ng-template [ngIf]="!adress">
+        <button mat-raised-button color="accent" (click)="Connect()" >
+          Connecter d'abord votre portefeuille au réseau ropsten
+        </button>
+      </ng-template>
+    </mat-form-field>
+  </form>
+  <br>
+
+  <a href="https://ropsten.etherscan.io/address/0xD1A36e0d2f7AC156593E6a243918C722e7b81B8c" target="_blank" onClick="fonction(this.href); return false;">
+    <button mat-raised-button color="primary">
+      Voir le smart contrat sur Etherscan
+    </button>
+  </a>
 
 </mat-card>

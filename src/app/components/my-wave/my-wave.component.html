@@ -1,6 +1,6 @@
 <mat-card>
 
-  <h1>My Wave app - Envoie un message sur la blockchain</h1><br>
+  <h1>My Wave app - Envoie un message sur la blockchain Rinkeby</h1><br>
 
   <ng-template [ngIf]="adress">
     <mat-accordion>
@@ -21,7 +21,7 @@
 
   <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Votre message : </mat-label>
+      <mat-label>Votre message - soyez bien connecté au réseau rinkeby : </mat-label>
       <textarea matInput placeholder="Ex. It makes me feel..." type="text" name="message" id="message1" [(ngModel)]="message" (keyup.enter)="Wave()"></textarea>
       <ng-template [ngIf]="adress">
         <button mat-raised-button color="accent" (click)="Wave()">
@@ -30,7 +30,7 @@
       </ng-template>
       <ng-template [ngIf]="!adress">
         <button mat-raised-button color="accent" (click)="Connect()" >
-          Connecter d'abord votre portefeuille
+          Connecter d'abord votre portefeuille au réseau rinkeby
         </button>
       </ng-template>
     </mat-form-field>
