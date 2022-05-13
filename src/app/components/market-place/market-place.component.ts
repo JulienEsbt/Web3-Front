@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {MarketPlaceService} from "../../services/market-place-contract/market-place.service";
 import {environment} from "../../../environments/environment";
 
+/*interface Parti {
+  id: number;
+  name: string;
+}*/
+
 @Component({
   selector: 'app-market-place',
   templateUrl: './market-place.component.html',
@@ -11,16 +16,20 @@ export class MarketPlaceComponent implements OnInit {
   adress: string[] | undefined;
   balance= ''
   contractAddress = '0xE72010C2381Ba55134e17E1DE8BA92A6d2915186';
-  abi = environment.helloworldabi;
+  abi = environment.marketplaceabi;
   last: any;
   price: number | undefined;
   propose: number | undefined;
   panelOpenState = false;
-  hide = true;
 
   constructor(
     private web3: MarketPlaceService) {
   }
+
+  /*partis: Parti[] = [
+    {id: 0, name: 'Vendeur'},
+    {id: 1, name: 'Acheteur'},
+  ];*/
 
   ngOnInit(): void {
     this.Connect();

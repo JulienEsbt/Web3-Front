@@ -23,6 +23,17 @@
     </button>
   </ng-template>
 
+  <!--<ng-template [ngIf]="adress">
+    <mat-form-field appearance="fill">
+      <mat-label>Qui êtes-vous ?</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let parti of partis" [value]="parti.id" >
+          {{parti.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-template>-->
+
   <form class="example-form">
     <mat-form-field appearance="fill" floatLabel="always">
       <mat-label>Price offer : </mat-label>
@@ -30,17 +41,31 @@
       <span matSuffix>.00 ETH</span>
       <ng-template [ngIf]="adress">
         <button mat-raised-button color="accent" (click)="makeAnOffer()">
-          Envoyer l'offre :
+          Envoyer l'offre
         </button>
       </ng-template>
     </mat-form-field>
   </form>
   <br>
 
+  <ng-template [ngIf]="adress">
+    <button mat-raised-button color="accent" (click)="acceptAnOffer()">
+      Accepter l'offre
+    </button>
+  </ng-template>
+
+  <ng-template [ngIf]="adress">
+    <button mat-raised-button color="accent" (click)="rejectAnOffer()">
+      Rejeter l'offre
+    </button>
+  </ng-template>
+  <br><br>
+
   <a href="https://ropsten.etherscan.io/address/0xE72010C2381Ba55134e17E1DE8BA92A6d2915186" target="_blank" onClick="fonction(this.href); return false;">
     <button mat-raised-button color="primary">
       Voir le smart contrat sur Etherscan
     </button>
   </a>
+
 
 </mat-card>
