@@ -1,4 +1,20 @@
-<h1 align="center">Angular Web3 Template.</h1>
+<h1 align="center">My front web3 app</h1>
+<h3>Interact with 3 of my smarts contracts : </h3>
+<p>
+- Hello World Smart Contract : which allows you to send message on the blockchain (Ethereum tesnet ropsten here) ;
+<br>
+ - My Wave Smart Contract : allows you as well to send message on the blockchain, but the back works differently (Ethereum testnet Rinkeby here) ;
+<br>
+ - Simple Market Place Smart Contract : allows you to create an object to sell when you deploy the smart contract, and you can here make some offer if you are the buyer or accept and deny offer if you are the seller (Ethereum testnet Ropsten here).
+</p>
+<br>
+<p>This is my first try with Angular so be kind please ^^ And if you have some advice I'll take them wit pleasure.</p>
+<p>Create with Angular, so mostly written with TypeScript (with HTML, CSS and JS).</p>
+<br>
+
+---
+
+<h2 align="center">Angular Web3 Template.</h2>
 
 <p align="center">
   <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular-logo" width="120px" height="120px"/>
@@ -7,8 +23,6 @@
     <br>Using the power of Angular.</i>
   <br>
 </p>
-
-
 
 
 
