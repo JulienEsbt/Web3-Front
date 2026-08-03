@@ -6,6 +6,7 @@ import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { provider } from 'web3-core';
 import {Contract/*, ContractOptions*/} from 'web3-eth-contract';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class HelloWorldService {
       walletconnect: {
         package: WalletConnectProvider, // required
         options: {
-          infuraId: '84d08e237e084e5994d0c9489d1dc8f0', // required change this with your own infura id
+          infuraId: environment.infuraId,
           description: 'Scan the qr code and sign in',
           qrcodeModalOptions: {
             mobileLinks: [
