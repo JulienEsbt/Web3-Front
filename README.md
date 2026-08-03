@@ -1,97 +1,59 @@
-<h1 align="center">My front web3 app</h1>
-<h3>Interact with 3 of my smarts contracts : </h3>
-<p>
-- Hello World Smart Contract : which allows you to send message on the blockchain (Ethereum tesnet ropsten here) ;
-<br>
- - My Wave Smart Contract : allows you as well to send message on the blockchain, but the back works differently (Ethereum testnet Rinkeby here) ;
-<br>
- - Simple Market Place Smart Contract : allows you to create an object to sell when you deploy the smart contract, and you can here make some offer if you are the buyer or accept and deny offer if you are the seller (Ethereum testnet Ropsten here).
-</p>
-<br>
-<p>This is my first try with Angular so be kind please ^^ And if you have some advice I'll take them wit pleasure.</p>
-<p>Create with Angular, so mostly written with TypeScript (with HTML, CSS and JS).</p>
-<br>
+# Angular Web3 Contract Explorer
 
----
+> **Status: Historical learning project (2022)** — built to learn Angular and
+> wallet integration. The original testnet deployments are no longer active.
 
-<h2 align="center">Angular Web3 Template.</h2>
+This Angular application brings together three early smart-contract exercises
+behind one interface. It demonstrates wallet connection, account information
+and contract-specific actions for message storage, a wave portal and a simple
+marketplace.
 
-<p align="center">
-  <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular-logo" width="120px" height="120px"/>
-  <br>
-  <i>Now you can easily add crypto dependencies and implement solutions 
-    <br>Using the power of Angular.</i>
-  <br>
-</p>
+## Included experiments
 
+- **Hello World:** read and update a message stored by a Solidity contract;
+- **Wave Portal:** connect a wallet, send a message and read wallet information;
+- **Simple Marketplace:** make, reject and accept offers through a contract
+  state machine.
 
+## Stack
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3
+- Angular 13 and TypeScript
+- Angular Material
+- Web3.js and ethers.js
+- Web3Modal and WalletConnect
+- Karma and Jasmine test scaffolding
 
-## Development server
+## Related contracts
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change
-any of the source files.
+- [Hello-World-Smart-Contract](https://github.com/JulienEsbt/Hello-World-Smart-Contract)
+- [My-Wave-Portal-Smart-Contract](https://github.com/JulienEsbt/My-Wave-Portal-Smart-Contract)
+- [Market-Place-Smart-Contract](https://github.com/JulienEsbt/Market-Place-Smart-Contract)
 
-## Code scaffolding
+## Run the interface locally
 
-Run `ng generate component component-name` to generate a new component. You can also
-use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a
-package that implements end-to-end testing capabilities.
-
-## Provider
-This Dapp use web3modal allow us to use more wallet connectors
-you can get more info [here](https://github.com/Web3Modal/web3modal)
-
-## Get infura key
-
-Create an infura account [here](https://infura.io/)
-in web3.serrvice.ts line 31 insert your key in infuraId: ''
-
-## Change Network
-
-in ``web3.serrvice.ts`` line 56 you can change the network to your desire net
-to  ``network: "mainnet",`` or ``network: "rinkeby",`` or ``network: "ropsten",``
-
-
-## Dependencies and changes to common Angular App
-
-**tsconfig.json**
-
-```json 
-  "compilerOptions": {
-    "paths":{
-      "crypto": ["./node_modules/crypto-browserify"],
-      "stream": ["./node_modules/stream-browserify"],
-      "assert": ["./node_modules/assert"],
-      "http": ["./node_modules/stream-http"],
-      "https": ["./node_modules/https-browserify"],
-      "url": ["./node_modules/url"],
-      "os": ["./node_modules/os-browserify"],
-    },
-    ....
-    ....
-  "angularCompilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "noImplicitAny": false,
-    "strictTemplates": true,
-    "strictNullChecks": false
-  }
-
+```bash
+git clone https://github.com/JulienEsbt/Web3-Front.git
+cd Web3-Front
+npm install
+npm start
 ```
 
+The Angular interface opens at `http://localhost:4200`. To restore blockchain
+interactions, deploy compatible contracts to a currently supported network and
+replace the old provider and contract configuration.
+
+## Historical limitations
+
+- Ropsten and Rinkeby, the configured networks, have been retired;
+- provider configuration is intentionally empty and must be supplied before use;
+- contract addresses and generated ABIs are tied to old deployments;
+- most tests are Angular-generated component or service creation checks;
+- the dependencies reflect the 2022 ecosystem and are not actively maintained;
+- the associated contracts are learning exercises and have not been audited.
+
+This repository is preserved as an example of an early Angular/Web3 integration,
+not as a live dApp or production-ready architecture.
+
+## License
+
+No open-source license has been selected for this learning repository.
